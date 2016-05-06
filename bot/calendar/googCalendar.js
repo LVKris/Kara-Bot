@@ -24,6 +24,7 @@ function authCallFunction(cb, reqType, param1, param2) {
   //     return;
   //   }
   if (!process.env.googleCalAPIKey) {
+    cb(':anguished: Darn! The API key is `undefined`');
     console.log('Error loading client secret file: process.env.googleCalAPIKey is undefined');
     cb(':anguished: Darn! The API key is `undefined`');
     return;
@@ -72,8 +73,12 @@ function authorize(credentials, callback, cb, param1, param2) {
 
   // Refactor this to actually retrieve new key as above
   if (!process.env.googleCalToken) {
-    console.log('Error loading OAuth2 token: process.env.googleCalToken is undefined');
     cb(':anguished: Darn! The auth token is `undefined`');
+    console.log('Error loading OAuth2 token: process.env.googleCalToken is undefined');
+<<<<<<< 8f89857f5026ff223d2fbef644149019c23d82dc
+    cb(':anguished: Darn! The auth token is `undefined`');
+=======
+>>>>>>> (feat) Return basic error message to user on error
     return;
   }
   oauth2Client.credentials = JSON.parse(process.env.googleCalToken);
@@ -137,8 +142,11 @@ function storeToken(token) {
 function listEvents(auth, cb, param1, param2) {
   var calendar = google.calendar('v3');
   var cData = ''; // Our return data, declare here for use in later branches
+<<<<<<< 8f89857f5026ff223d2fbef644149019c23d82dc
   var maxDate = new Date(param1);
   maxDate.setHours(24, 0, 0, 0); // setHours returns numeric value, must do 2 step process
+=======
+>>>>>>> (feat) Return basic error message to user on error
   calendar.events.list({
     auth: auth,
     // calendarId: 'primary',
@@ -163,6 +171,7 @@ function listEvents(auth, cb, param1, param2) {
       cData += ' no events found```';
       cb(cData);
     } else {
+<<<<<<< 8f89857f5026ff223d2fbef644149019c23d82dc
       // Fun with JavaScript dates, ISO will roll date forward by time zone offset, so roll hours back
       // by number of hours of time zone offset first, then create ISO string
       var ISODate = new Date(param1);
@@ -170,6 +179,11 @@ function listEvents(auth, cb, param1, param2) {
       ISODate = ISODate.toISOString().slice(0, 10);
       console.log('Upcoming 20 events:');
       cData = '*' + events[0].organizer.displayName + '*```' + param1.toString().slice(0, 10) + '\n';
+=======
+      var todayDate = ((new Date()).toISOString()).slice(0, 10)
+      console.log('Upcoming 10 events:');
+      cData = '*' + events[0].organizer.displayName + '*```';
+>>>>>>> (feat) Return basic error message to user on error
       for (var i = 0; i < events.length; i++) {
         var event = events[i];
         var start = event.start.dateTime || event.start.date;
@@ -278,6 +292,8 @@ function listCalendars(auth, cb) {
     auth: auth
   }, function (err, response) {
     if (err) {
+      cData = ':anguished: Darn! The API returned an error with that option';
+      cb(cData);
       console.log('The API returned an error: ' + err);
       cData = ':anguished: Darn! The API returned an error with that option';
       cb(cData);
