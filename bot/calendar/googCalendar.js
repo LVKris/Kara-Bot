@@ -24,6 +24,7 @@ function authCallFunction(cb, reqType, param1, param2) {
   //     return;
   //   }
   if (!process.env.googleCalAPIKey) {
+    cb(':anguished: Darn! The API key is `undefined`');
     console.log('Error loading client secret file: process.env.googleCalAPIKey is undefined');
     cb(':anguished: Darn! The API key is `undefined`');
     return;
@@ -72,8 +73,8 @@ function authorize(credentials, callback, cb, param1, param2) {
 
   // Refactor this to actually retrieve new key as above
   if (!process.env.googleCalToken) {
-    console.log('Error loading OAuth2 token: process.env.googleCalToken is undefined');
     cb(':anguished: Darn! The auth token is `undefined`');
+    console.log('Error loading OAuth2 token: process.env.googleCalToken is undefined');
     return;
   }
   oauth2Client.credentials = JSON.parse(process.env.googleCalToken);
@@ -170,9 +171,6 @@ function listEvents(auth, cb, param1, param2) {
       ISODate = ISODate.toISOString().slice(0, 10);
       console.log('Upcoming 20 events:');
       cData = '*' + events[0].organizer.displayName + '*```' + param1.toString().slice(0, 10) + '\n';
-      var todayDate = addParam1.slice(0, 10)
-      console.log('Upcoming 10 events:');
-      cData = '*' + events[0].organizer.displayName + '*```' + new Date(addParam1).toString().slice(0,10) + '\n';
       for (var i = 0; i < events.length; i++) {
         var event = events[i];
         var start = event.start.dateTime || event.start.date;
@@ -281,6 +279,8 @@ function listCalendars(auth, cb) {
     auth: auth
   }, function (err, response) {
     if (err) {
+      cData = ':anguished: Darn! The API returned an error with that option';
+      cb(cData);
       console.log('The API returned an error: ' + err);
       cData = ':anguished: Darn! The API returned an error with that option';
       cb(cData);
