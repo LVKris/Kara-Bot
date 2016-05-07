@@ -24,7 +24,6 @@ function authCallFunction(cb, reqType, param1, param2) {
   //     return;
   //   }
   if (!process.env.googleCalAPIKey) {
-    cb(':anguished: Darn! The API key is `undefined`');
     console.log('Error loading client secret file: process.env.googleCalAPIKey is undefined');
     cb(':anguished: Darn! The API key is `undefined`');
     return;
@@ -73,8 +72,8 @@ function authorize(credentials, callback, cb, param1, param2) {
 
   // Refactor this to actually retrieve new key as above
   if (!process.env.googleCalToken) {
-    cb(':anguished: Darn! The auth token is `undefined`');
     console.log('Error loading OAuth2 token: process.env.googleCalToken is undefined');
+    cb(':anguished: Darn! The auth token is `undefined`');
     return;
   }
   oauth2Client.credentials = JSON.parse(process.env.googleCalToken);
@@ -282,11 +281,6 @@ function listCalendars(auth, cb) {
     auth: auth
   }, function (err, response) {
     if (err) {
-      cData = ':anguished: Darn! The API returned an error with that option';
-      cb(cData);
-      console.log('The API returned an error: ' + err);
-      cData = ':anguished: Darn! The API returned an error with that option';
-      cb(cData);
       console.log('The API returned an error: ' + err);
       cData = ':anguished: Darn! The API returned an error with that option';
       cb(cData);
