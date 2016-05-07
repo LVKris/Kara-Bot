@@ -16,7 +16,6 @@ var SCOPES = ['https://www.googleapis.com/auth/calendar'];
 // var TOKEN_DIR = secretsPath;
 // var TOKEN_PATH = TOKEN_DIR + 'calendar-nodejs-quickstart.json';
 
-
 function authCallFunction(cb, reqType, param1, param2) {
   // Refactor to .ENV pass-in of Calendar API key, instead of loading from disk:
   // fs.readFile(secretsPath + 'client_secret.json', function processClientSecrets(err, content) {
@@ -79,6 +78,7 @@ function authorize(credentials, callback, cb, param1, param2) {
   }
   oauth2Client.credentials = JSON.parse(process.env.googleCalToken);
   callback(oauth2Client, cb, param1, param2);
+}
 
 /**
  * Get and store new token after prompting for user authorization, and then
