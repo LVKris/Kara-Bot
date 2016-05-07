@@ -171,6 +171,9 @@ function listEvents(auth, cb, param1, param2) {
       ISODate = ISODate.toISOString().slice(0, 10);
       console.log('Upcoming 20 events:');
       cData = '*' + events[0].organizer.displayName + '*```' + param1.toString().slice(0, 10) + '\n';
+      var todayDate = ((new Date()).toISOString()).slice(0, 10)
+      console.log('Upcoming 10 events:');
+      cData = '*' + events[0].organizer.displayName + '*```';
       for (var i = 0; i < events.length; i++) {
         var event = events[i];
         var start = event.start.dateTime || event.start.date;
