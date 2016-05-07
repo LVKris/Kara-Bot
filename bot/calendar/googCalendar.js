@@ -16,7 +16,11 @@ var SCOPES = ['https://www.googleapis.com/auth/calendar'];
 // var TOKEN_DIR = secretsPath;
 // var TOKEN_PATH = TOKEN_DIR + 'calendar-nodejs-quickstart.json';
 
+<<<<<<< 1a70e322275919356580d3abe1a2f421f0cb1d1c
 function authCallFunction(cb, reqType, param1, param2) {
+=======
+function authCallFunction(cb, reqType, addParam1, addParam2) {
+>>>>>>> (feat) Add event listing for tomorrow
   // Refactor to .ENV pass-in of Calendar API key, instead of loading from disk:
   // fs.readFile(secretsPath + 'client_secret.json', function processClientSecrets(err, content) {
   //   if (err) {
@@ -36,6 +40,7 @@ function authCallFunction(cb, reqType, param1, param2) {
     authorize(JSON.parse(content), listCalendars, cb);
   }
   if (reqType === 'days events') {
+<<<<<<< 1a70e322275919356580d3abe1a2f421f0cb1d1c
     authorize(JSON.parse(content), listEvents, cb, param1, param2);
   }
   if (reqType === 'free slots') {
@@ -43,6 +48,9 @@ function authCallFunction(cb, reqType, param1, param2) {
   }
   if (reqType === 'insert event') {
     authorize(JSON.parse(content), insertEvent, cb, param1, param2);
+=======
+    authorize(JSON.parse(content), listEvents, cb, addParam1, addParam2);
+>>>>>>> (feat) Add event listing for tomorrow
   }
   // });
 }
@@ -53,7 +61,11 @@ function authCallFunction(cb, reqType, param1, param2) {
  * @param {Object} credentials The authorization client credentials.
  * @param {function} callback The callback to call with the authorized client.
  */
+<<<<<<< 1a70e322275919356580d3abe1a2f421f0cb1d1c
 function authorize(credentials, callback, cb, param1, param2) {
+=======
+function authorize(credentials, callback, cb, addParam1, addParam2) {
+>>>>>>> (feat) Add event listing for tomorrow
   var clientSecret = credentials.installed.client_secret;
   var clientId = credentials.installed.client_id;
   var redirectUrl = credentials.installed.redirect_uris[0];
@@ -82,7 +94,11 @@ function authorize(credentials, callback, cb, param1, param2) {
     return;
   }
   oauth2Client.credentials = JSON.parse(process.env.googleCalToken);
+<<<<<<< 1a70e322275919356580d3abe1a2f421f0cb1d1c
   callback(oauth2Client, cb, param1, param2);
+=======
+  callback(oauth2Client, cb, addParam1, addParam2);
+>>>>>>> (feat) Add event listing for tomorrow
 }
 
 /**
@@ -139,7 +155,11 @@ function storeToken(token) {
  *
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
+<<<<<<< 1a70e322275919356580d3abe1a2f421f0cb1d1c
 function listEvents(auth, cb, param1, param2) {
+=======
+function listEvents(auth, cb, addParam1, addParam2) {
+>>>>>>> (feat) Add event listing for tomorrow
   var calendar = google.calendar('v3');
   var cData = ''; // Our return data, declare here for use in later branches
 <<<<<<< 8f89857f5026ff223d2fbef644149019c23d82dc
@@ -151,8 +171,12 @@ function listEvents(auth, cb, param1, param2) {
     auth: auth,
     // calendarId: 'primary',
     calendarId: '62ao9jj5es0se62blotv8p5up0@group.calendar.google.com',
+<<<<<<< 1a70e322275919356580d3abe1a2f421f0cb1d1c
     timeMin: param1.toISOString(), // Google takes into account the time zone difference!!
     timeMax: maxDate.toISOString(),
+=======
+    timeMin: addParam1,
+>>>>>>> (feat) Add event listing for tomorrow
     maxResults: 20,
     singleEvents: true,
     orderBy: 'startTime'
@@ -171,6 +195,7 @@ function listEvents(auth, cb, param1, param2) {
       cData += ' no events found```';
       cb(cData);
     } else {
+<<<<<<< 1a70e322275919356580d3abe1a2f421f0cb1d1c
 <<<<<<< 8f89857f5026ff223d2fbef644149019c23d82dc
       // Fun with JavaScript dates, ISO will roll date forward by time zone offset, so roll hours back
       // by number of hours of time zone offset first, then create ISO string
@@ -184,6 +209,11 @@ function listEvents(auth, cb, param1, param2) {
       console.log('Upcoming 10 events:');
       cData = '*' + events[0].organizer.displayName + '*```';
 >>>>>>> (feat) Return basic error message to user on error
+=======
+      var todayDate = addParam1.slice(0, 10)
+      console.log('Upcoming 10 events:');
+      cData = '*' + events[0].organizer.displayName + '*```' + new Date(addParam1).toString().slice(0,10) + '\n';
+>>>>>>> (feat) Add event listing for tomorrow
       for (var i = 0; i < events.length; i++) {
         var event = events[i];
         var start = event.start.dateTime || event.start.date;
