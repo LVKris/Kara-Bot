@@ -236,7 +236,7 @@ function listFreeSlots(auth, cb, param1, param2) {
       var allDayEvent = false;
       console.log('Upcoming 20 events:');
       cData = '*' + events[0].organizer.displayName + '* \n```' + param1.toString().slice(0, 10) + '```\n';
-      for (var i = 0; i < events.length; i++) {
+     for (var i = 0; i < events.length; i++) {
         var event = events[i];
         var start = event.start.dateTime || event.start.date;
         var end = event.end.dateTime || event.end.date;
