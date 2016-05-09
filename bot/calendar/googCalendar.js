@@ -248,8 +248,14 @@ function listFreeSlots(auth, cb, param1, param2) {
             if (!allDayEvent && curTime < start.slice(11, 16)) {
               cData += '`' + dmzTime(curTime, true) + ' to ' + dmzTime(start.slice(11, 16), true) + ' free slot`\n';
             }
+<<<<<<< 26c8264c9f9f0225f4520b09fa0198b9bf2274f8
             curTime = end.slice(11, 16);
             cData += dmzTime(start.slice(11, 16)) + ' to ' + dmzTime(end.slice(11, 16), true);
+=======
+            curTime = end.slice(11, 16)
+            cData += dmzTime(start.slice(11, 16)) + ' to ' + dmzTime(end.slice(11, 16), true);
+            // cData += dmzTime(start.slice(11, 16)) + ' to ' + dmzTime(event.end.dateTime.slice(11, 16), true);
+>>>>>>> (fix) Refactor end time to end variable from end.time object property
             if (start.slice(0, 10) !== ISODate) {
               cData += ' (starts day before)';
             }
@@ -266,7 +272,11 @@ function listFreeSlots(auth, cb, param1, param2) {
           }
         }
       }
+<<<<<<< 26c8264c9f9f0225f4520b09fa0198b9bf2274f8
       if (curTime < '24:00' && !allDayEvent && end.length > 10 && end.slice(11, 16) !== '00:00') {
+=======
+      if (curTime < '24:00' && !allDayEvent && end.length > 10) {
+>>>>>>> (fix) Refactor end time to end variable from end.time object property
         cData += '`' + dmzTime(curTime, true) + ' to ' + dmzTime('00:00', true) + ' free slot`\n';
       }
       cb(cData);
