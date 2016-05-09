@@ -37,7 +37,6 @@ controller.hears(['life, the universe and everything', 'life the universe and ev
 controller.hears(['master code', 'konami code'], directMessage, egg.konami);
 
 //Get highest priority issues
-
 controller.hears(['jira priority 1', 'jira priority one', 'jira highest priority', 'highest priority jira'], directMessage, jira.getHighestPriorityIssues);
 
 // Google Calendar
