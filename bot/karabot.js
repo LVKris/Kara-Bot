@@ -35,6 +35,7 @@ controller.hears(['uptime', 'identify yourself', 'who are you', 'what is your na
 controller.hears(['life, the universe and everything', 'life the universe and everything'],
   directMessage, egg.hitch);
 controller.hears(['master code', 'konami code'], directMessage, egg.konami);
+  'direct_message,direct_mention,mention', egg.hitch);
 
 //Get highest priority issues
 controller.hears(['jira priority 1', 'jira priority one', 'jira highest priority', 'highest priority jira'], directMessage, jira.getHighestPriorityIssues);
