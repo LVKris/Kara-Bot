@@ -69,3 +69,6 @@ controller.hears(['tone', 'tone help'], directMessage, tone.help);
 // Weather
 controller.hears(['weather today in', 'weather today for', 'weather today'], directMessage, weather.getTodayWeather);
 controller.hears(['weather tomorrow in', 'weather tomorrow for', 'weather tomorrow'], directMessage, weather.getTomorrowWeather);
+
+// Watson
+controller.hears(['translate -([A-z]{2}) (.*)'], directMessage, watson.translate);
