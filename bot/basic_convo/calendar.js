@@ -131,6 +131,19 @@ function chelp(bot, message) {
   bot.reply(message, commands);
 }
 
+function chelp(bot, message) {
+  var commands = '```';
+  commands += 'clist    - list calendars\n'
+  commands += 'ctoday   - events today\n'
+  commands += 'ctomo    - events tomorrow\n'
+  commands += 'cdayaft  - events day after tomorrow\n'
+  commands += 'cfree    - free blocks today\n'
+  commands += 'cfreetom - free blocks tomorrow\n'
+  commands += 'cnew     - add an event today'
+  commands += '```'
+  bot.reply(message, commands);  
+}
+
 module.exports = {
   clist: clist,
   ctoday: ctoday,

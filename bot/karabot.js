@@ -38,7 +38,6 @@ controller.hears(['master code', 'konami code'], directMessage, egg.konami);
   'direct_message,direct_mention,mention', egg.hitch);
 
 //Get highest priority issues
-<<<<<<< 47b63ee8b946264fca91f65d5e3e5466e0257ffc
 controller.hears(['jira priority 1', 'jira priority one', 'jira highest priority', 'highest priority jira'], directMessage, jira.getHighestPriorityIssues);
 
 // Google Calendar
@@ -59,14 +58,3 @@ controller.hears(['watch (.*\/.*)'], directMessage, github.watchRepo);
 
 // Watson
 controller.hears(['translate -([A-z]{2}) (.*)'], directMessage, watson.translate);
-=======
-
-controller.hears(['jira priority 1', 'jira priority one', 'jira highest priority', 'highest priority jira'], 'direct_message,direct_mention,mention', jira.getHighestPriorityIssues);
-controller.hears(['clist'], 'direct_message,direct_mention,mention', calendar.clist);
-controller.hears(['ctoday'], 'direct_message,direct_mention,mention', calendar.ctoday);
-controller.hears(['ctomo*', 'ctomm*'], 'direct_message,direct_mention,mention', calendar.ctomo);
-controller.hears(['cdayaft'], 'direct_message,direct_mention,mention', calendar.cdayaft);
-controller.hears(['cfree'], 'direct_message,direct_mention,mention', calendar.cfree);
-controller.hears(['cfreetom'], 'direct_message,direct_mention,mention', calendar.cfreetom);
-controller.hears(['cnew'], 'direct_message,direct_mention,mention', calendar.cnew);
->>>>>>> (feat) Complete time input logic for setting new event
