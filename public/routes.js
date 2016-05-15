@@ -7,6 +7,7 @@ import ChatLogs from './components/chat_logs';
 import UsersList from './components/users_list';
 import User from './components/user';
 import BotActivity from './components/bot_activity';
+import Chart from './components/chart';
 import BotConfig from './components/bot_config';
 
 export default (
@@ -15,5 +16,8 @@ export default (
     <Route path='chat' component={ChatLogs} />
     <Route path='users' component={UsersList} />
     <Route path='users/:id' component={User} />
+    <Route path='activity' component={BotActivity} />
+    <Route path='chart' component={Chart} />
+    <Route path='config' component={BotConfig} />
   </Route>
 );
