@@ -71,4 +71,4 @@ controller.hears(['weather tomorrow in (.*)', 'weather tomorrow for (.*)', 'weat
 controller.hears(['4 day in (.*)', '4 day for (.*)'], directMessage, weather.getFourDayForecast);
 
 // Watson
-controller.hears(['translate -([A-z]{2}) (.*)'], directMessage, watson.translate);
+controller.hears(['translate -([A-z]{2}) (.*)'], directMessage, translate);
