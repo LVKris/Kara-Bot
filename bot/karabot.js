@@ -70,4 +70,4 @@ controller.hears(['weather today in', 'weather today for', 'weather today'], dir
 controller.hears(['weather tomorrow in', 'weather tomorrow for', 'weather tomorrow'], directMessage, weather.getTomorrowWeather);
 
 // Watson
-controller.hears(['translate -([A-z]{2}) (.*)'], directMessage, watson.translate);
+controller.hears(['translate -([A-z]{2}) (.*)'], directMessage, translate);
