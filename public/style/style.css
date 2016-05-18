@@ -9,3 +9,28 @@ p.navbar-text.navbar-right {
 body {
   padding-top: 70px;
 }
+
+.openness_big5 {
+ fill: #4169E1;
+ background: #4169E1;
+}
+
+.conscientiousness_big5 {
+ fill: #DAA520;
+ background: #DAA520;
+}
+
+.extraversion_big5 {
+ fill:  #6495ED;
+ background:  #6495ED;
+}
+
+.agreeableness_big5 {
+ fill: #32CD32;
+ background: #32CD32;
+}
+
+.neuroticism_big5 {
+ fill:  #DC143C;
+ background:  #DC143C;
+}
